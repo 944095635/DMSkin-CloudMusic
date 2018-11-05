@@ -7,6 +7,7 @@
 
 ## 【更新日志】
 ### 1.0.0.0 (2018-11-5)
-
+<Image width="600" src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1000.jpg'></Image>
 1. 项目结构搭建完成。
 2. 主界面初步完成。
+
