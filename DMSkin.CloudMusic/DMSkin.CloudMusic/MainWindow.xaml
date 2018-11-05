@@ -5,8 +5,10 @@
     xmlns:DMSkin="clr-namespace:DMSkin.WPF;assembly=DMSkin.WPF"
     xmlns:controls="clr-namespace:DMSkin.CloudMusic.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dmcontrols="clr-namespace:DMSkin.WPF.Controls;assembly=DMSkin.WPF"
     xmlns:local="clr-namespace:DMSkin.CloudMusic"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:DMSkin.CloudMusic.ViewModel"
     Title="网易云音乐"
     Width="1022"
     Height="670"
@@ -16,10 +18,14 @@
     DMWindowShadowOpacity="0.4"
     DMWindowShadowSize="20"
     FontFamily="{StaticResource FontNormal}"
-    Foreground="White"
+    Foreground="{StaticResource TextColor}"
     Icon="Image/Logo/ic_launcher.png"
     TextOptions.TextFormattingMode="Display"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -27,6 +33,11 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid Background="{DynamicResource ThemeColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="190" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <WrapPanel
                 Margin="15,0,0,0"
                 HorizontalAlignment="Left"
@@ -42,8 +53,177 @@
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource FontTitle}"
                     FontSize="18"
+                    Foreground="White"
                     Text="网易云音乐" />
             </WrapPanel>
+            <StackPanel
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <controls:IconButton
+                    Command="{x:Static NavigationCommands.BrowseBack}"
+                    CommandTarget="{Binding ElementName=Frame}"
+                    CornerRadius="3,0,0,3"
+                    Style="{StaticResource PageButton}">
+                    <Path
+                        Width="11"
+                        Height="11"
+                        Data="{StaticResource Icon_Page_Left}"
+                        Fill="White"
+                        Stretch="Uniform" />
+                </controls:IconButton>
+                <controls:IconButton
+                    Command="{x:Static NavigationCommands.BrowseForward}"
+                    CommandTarget="{Binding ElementName=Frame}"
+                    CornerRadius="0,3,3,0"
+                    Style="{StaticResource PageButton}">
+                    <Path
+                        Width="11"
+                        Height="11"
+                        Data="{StaticResource Icon_Page_Right}"
+                        Fill="White"
+                        Stretch="Uniform" />
+                </controls:IconButton>
+                <Border
+                    Width="220"
+                    Margin="5,0,0,0"
+                    Background="{StaticResource ThemeColor3}"
+                    CornerRadius="10">
+                    <Grid Margin="8,0,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <dmcontrols:DMTextBox
+                            BorderThickness="0"
+                            CaretBrush="White"
+                            Foreground="White"
+                            Hint="搜索音乐，视频，歌词，电台"
+                            HintColor="#C77373" />
+                        <dmcontrols:DMButton
+                            Grid.Column="1"
+                            Background="{StaticResource TransparentColor}"
+                            BorderThickness="0">
+                            <Path
+                                Width="12"
+                                Height="12"
+                                Data="{StaticResource Icon_Serach}"
+                                Fill="White"
+                                Stretch="Fill" />
+                        </dmcontrols:DMButton>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Margin="0,0,12,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <dmcontrols:DMButton
+                    Margin="10,0,15,0"
+                    Background="{StaticResource TransparentColor}"
+                    BorderThickness="0"
+                    Cursor="Hand">
+                    <WrapPanel>
+                        <Ellipse Width="25" Height="25">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Image/Logo/head.jpg" RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            Foreground="White"
+                            Text="Dream丶Ma..." />
+                        <Path
+                            Width="10"
+                            Height="10"
+                            Margin="15,0,0,0"
+                            Data="{StaticResource Icon_MenuDown}"
+                            Fill="White"
+                            Stretch="Uniform" />
+                    </WrapPanel>
+                </dmcontrols:DMButton>
+                <dmcontrols:DMSystemButton
+                    Margin="5,0,15,0"
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="27"
+                    Icon="{StaticResource Icon_Skin}"
+                    IconWidth="17" />
+                <Grid>
+                    <dmcontrols:DMSystemButton
+                        Margin="0,0,5,0"
+                        HorizontalAlignment="Right"
+                        Cursor="Hand"
+                        DMSystemButtonForeground="#EEC1C1"
+                        DMSystemButtonHoverColor="Transparent"
+                        DMSystemButtonHoverForeground="White"
+                        DMSystemButtonSize="26"
+                        Icon="{StaticResource Icon_Email}"
+                        IconHeight="12"
+                        IconWidth="16" />
+                    <Border
+                        Height="16"
+                        Margin="0,0,-5,15"
+                        Padding="4,0,4,0"
+                        HorizontalAlignment="Right"
+                        Background="White"
+                        CornerRadius="8">
+                        <TextBlock
+                            Margin="0,0,0,1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{StaticResource ThemeColor}"
+                            Text="82" />
+                    </Border>
+                </Grid>
+                <dmcontrols:DMSystemButton
+                    Margin="10,0,0,0"
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="26"
+                    Icon="{StaticResource Icon_Setting}" />
+                <Border
+                    Width="1"
+                    Height="22"
+                    Margin="14,0,10,0"
+                    Background="#A82828" />
+                <dmcontrols:DMSystemButton
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="26"
+                    Icon="{StaticResource Icon_Star}"
+                    IconHeight="16"
+                    IconWidth="16" />
+                <dmcontrols:DMSystemMinButton
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="22"
+                    Icon="{StaticResource Icon_Min}" />
+                <dmcontrols:DMSystemMaxButton
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="24"
+                    Icon="{StaticResource Icon_Close}" />
+                <dmcontrols:DMSystemCloseButton
+                    Cursor="Hand"
+                    DMSystemButtonForeground="#EEC1C1"
+                    DMSystemButtonHoverColor="Transparent"
+                    DMSystemButtonHoverForeground="White"
+                    DMSystemButtonSize="22" />
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -65,27 +245,27 @@
                                     Content="发现音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_FindMusic}"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="私人FM"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_FM}"
                                     ImageHeight="14"
                                     ImageWidth="18"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="视频"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Video}"
                                     ImageHeight="12"
                                     ImageWidth="18"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="朋友"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Group}"
                                     ImageWidth="20"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                             </StackPanel>
                         </Expander>
                         <Expander
@@ -99,32 +279,32 @@
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Music}"
                                     ImageWidth="14"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocalMusic}" />
                                 <controls:ImageRadioButton
                                     Content="下载管理"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Down}"
                                     ImageHeight="16"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="我的音乐云盘"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Cloud}"
                                     ImageWidth="19"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="我的电台"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Radio}"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="我的收藏"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Love}"
                                     ImageHeight="16"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                             </StackPanel>
                         </Expander>
                         <Expander
@@ -137,38 +317,38 @@
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Like}"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                             </StackPanel>
                         </Expander>
                         <Expander
                             Margin="0,10,0,0"
                             Header="收藏的歌单"
-                            IsExpanded="True">
+                            IsExpanded="False">
                             <StackPanel>
                                 <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                                 <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Word}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
                             </StackPanel>
                         </Expander>
                     </StackPanel>
@@ -176,7 +356,10 @@
             </Grid>
             <GridSplitter Width="1" Background="{StaticResource SplitterColor}" />
             <Grid Grid.Column="1" Background="{StaticResource RightGridColor}">
-                <Frame />
+                <Frame
+                    x:Name="Frame"
+                    Content="{Binding CurrentPage}"
+                    NavigationUIVisibility="Hidden" />
             </Grid>
         </Grid>
         <Border
@@ -211,7 +394,6 @@
                         Grid.Column="1"
                         Width="35"
                         Height="35"
-                        IsChecked=""
                         Style="{StaticResource MusicPlayButton}" />
                     <Button
                         Grid.Column="2"

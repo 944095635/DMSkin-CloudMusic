@@ -58,6 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\PageManager.cs" />
+    <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Model\LeftMenu.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\PageLocalMusicViewModel.cs" />
+    <Compile Include="View\PageEmpty.xaml.cs">
+      <DependentUpon>PageEmpty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageLocalMusic.xaml.cs">
+      <DependentUpon>PageLocalMusic.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +110,14 @@
     <Page Include="Style\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PageEmpty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageLocalMusic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +163,9 @@
   <ItemGroup>
     <Resource Include="Image\tg.png" />
     <Resource Include="Image\th.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Logo\head.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

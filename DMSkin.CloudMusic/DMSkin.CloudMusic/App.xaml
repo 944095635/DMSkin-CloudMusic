@@ -8,10 +8,11 @@
         <ResourceDictionary>
             <!--  字体  -->
             <FontFamily x:Key="FontNormal">/DMSkin.CloudMusic;component/Font/#Roboto Light,SimSun</FontFamily>
+            <!--<FontFamily x:Key="FontNormal">/DMSkin.CloudMusic;component/Font/#Roboto Light,SimSun</FontFamily>-->
             <FontFamily x:Key="FontTitle">微软雅黑</FontFamily>
 
 
-            <TextBlock x:Key="xxx" FontFamily="/DMSkin.CloudMusic;component/Font/#Roboto Light" />
+            <TextBlock x:Key="xxx" FontFamily="Microsoft YaHei" />
             <!--  字体大小  -->
 
             <!--  转换器  -->

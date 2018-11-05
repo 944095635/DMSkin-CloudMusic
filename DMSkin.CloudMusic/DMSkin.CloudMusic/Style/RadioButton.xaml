@@ -8,7 +8,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="#FF707070" />
-        <Setter Property="Foreground" Value="#5C5C5C" />
+        <Setter Property="Foreground" Value="{StaticResource TextColor}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
