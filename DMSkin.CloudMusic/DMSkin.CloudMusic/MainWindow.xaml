@@ -43,17 +43,23 @@
                 Margin="15,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
-                <Path
-                    Width="20"
-                    Height="20"
-                    Data="{StaticResource Icon_WYY}"
-                    Fill="White"
-                    Stretch="Uniform" />
+                <Border
+                    Width="22"
+                    Height="22"
+                    Background="White"
+                    CornerRadius="100">
+                    <Path
+                        Width="14"
+                        Height="14"
+                        Data="{StaticResource Icon_WYY}"
+                        Fill="{StaticResource ThemeColor2}"
+                        Stretch="Uniform" />
+                </Border>
                 <TextBlock
                     Margin="4,0,0,0"
                     VerticalAlignment="Center"
                     FontFamily="{StaticResource FontTitle}"
-                    FontSize="18"
+                    FontSize="17"
                     Foreground="White"
                     Text="网易云音乐" />
             </WrapPanel>
@@ -87,7 +93,7 @@
                 </controls:IconButton>
                 <Border
                     Width="220"
-                    Margin="5,0,0,0"
+                    Margin="10,0,0,0"
                     Background="{StaticResource ThemeColor3}"
                     CornerRadius="10">
                     <Grid Margin="8,0,5,0">
@@ -504,31 +510,6 @@
                 </Grid>
             </Grid>
         </Border>
-        <ResizeGrip
-            Grid.Row="2"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
-            <ResizeGrip.Template>
-                <ControlTemplate>
-                    <Path
-                        Width="12"
-                        Height="12"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Data="M15.796278,16.882958 L29.796278,16.882958 29.796278,18.882958 15.796278,18.882958 z M8.389616,8.9336629 L37.389616,8.9336629 37.389616,10.933663 8.389616,10.933663 z M0.5,0.5 L44.5,0.5 44.5,2.5 0.5,2.5 z"
-                        Fill="Black"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Stretch="Uniform">
-                        <Path.LayoutTransform>
-                            <TransformGroup>
-                                <ScaleTransform />
-                                <SkewTransform />
-                                <RotateTransform Angle="-45" />
-                            </TransformGroup>
-                        </Path.LayoutTransform>
-                    </Path>
-                </ControlTemplate>
-            </ResizeGrip.Template>
-        </ResizeGrip>
+        <ResizeGrip Grid.Row="2" Style="{StaticResource WyyResizeGrip}" />
     </Grid>
 </DMSkin:DMSkinSimpleWindow>

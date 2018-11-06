@@ -61,6 +61,9 @@
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMDataGrid.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMListBox.xaml" />
 
+                <!--  DMSKin拉伸按钮  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMResizeGrip.xaml" />
+
 
                 <!--  最后加载项目其他的样式  -->
                 <ResourceDictionary Source="Style/Path.xaml" />
