@@ -1,0 +1,115 @@
+﻿<Page
+    x:Class="DMSkin.CloudMusic.View.PageDownLoad"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dmcontrols="clr-namespace:DMSkin.WPF.Controls;assembly=DMSkin.WPF"
+    xmlns:local="clr-namespace:DMSkin.CloudMusic.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="PageDownLoad"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontFamily="{StaticResource FontNormal}"
+    mc:Ignorable="d">
+    <Grid>
+        <TabControl
+            Grid.Row="1"
+            Background="Transparent"
+            Style="{StaticResource DMTopTabControl}">
+            <dmcontrols:DMTabItem
+                Width="110"
+                Height="30"
+                Foreground="#888888"
+                Header="已下载单曲"
+                SelectedColor="#7C7D85"
+                SelectedForeground="White"
+                TabItemType="Left">
+                <Border BorderBrush="{StaticResource SplitterColor}" BorderThickness="0,1,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="58" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+                                <dmcontrols:DMButton
+                                    Width="100"
+                                    Height="28"
+                                    Background="{StaticResource ThemeColor}"
+                                    BorderThickness="0"
+                                    Content="播放全部"
+                                    CornerRadius="5,0,0,5"
+                                    Foreground="White" />
+                                <dmcontrols:DMButton
+                                    Width="28"
+                                    Height="28"
+                                    Background="{StaticResource ThemeColor}"
+                                    BorderThickness="0"
+                                    CornerRadius="0,5,5,0"
+                                    Foreground="White">
+                                    <Path
+                                        Width="12"
+                                        Height="12"
+                                        Data="{StaticResource Icon_Add}"
+                                        Fill="White"
+                                        Stretch="Uniform" />
+                                </dmcontrols:DMButton>
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="存储目录：" />
+                                <TextBlock
+                                    Margin="2,0,2,0"
+                                    VerticalAlignment="Center"
+                                    Text="D:\CloundMusic" />
+                                <dmcontrols:DMLinkButton
+                                    VerticalAlignment="Center"
+                                    Content="打开目录"
+                                    DMDisplayLine="False"
+                                    DMSystemButtonHoverColor="Transparent"
+                                    Foreground="#0C73C2" />
+                            </StackPanel>
+                        </Grid>
+                        <Border
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource SplitterColor}"
+                            BorderThickness="0,1,0,0">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path
+                                    Width="100"
+                                    Height="100"
+                                    Data="{StaticResource Icon_Down}"
+                                    Fill="{StaticResource TextColor3}"
+                                    Stretch="Uniform" />
+                                <TextBlock Margin="0,30,0,0" Text="还没有下载的音乐哦，快去下载吧~" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </dmcontrols:DMTabItem>
+            <dmcontrols:DMTabItem
+                Width="110"
+                Height="30"
+                Foreground="#888888"
+                Header="已下载电台节目"
+                SelectedColor="#7C7D85"
+                SelectedForeground="White"
+                TabItemType="Middle" />
+            <dmcontrols:DMTabItem
+                Width="110"
+                Height="30"
+                Foreground="#888888"
+                Header="已下载MV"
+                SelectedColor="#7C7D85"
+                SelectedForeground="White" />
+            <dmcontrols:DMTabItem
+                Width="110"
+                Height="30"
+                Foreground="#888888"
+                Header="正在下载"
+                SelectedColor="#7C7D85"
+                SelectedForeground="White"
+                TabItemType="Right" />
+        </TabControl>
+    </Grid>
+</Page>

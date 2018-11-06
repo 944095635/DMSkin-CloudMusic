@@ -20,6 +20,7 @@
     FontFamily="{StaticResource FontNormal}"
     Foreground="{StaticResource TextColor}"
     Icon="Image/Logo/ic_launcher.png"
+    ResizeMode="CanResizeWithGrip"
     TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -245,7 +246,7 @@
                                     Content="发现音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_FindMusic}"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=FindMusic}" />
                                 <controls:ImageRadioButton
                                     Content="私人FM"
                                     GroupName="Menu"
@@ -286,13 +287,13 @@
                                     Image="{StaticResource Icon_Down}"
                                     ImageHeight="16"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=DownLoad}" />
                                 <controls:ImageRadioButton
                                     Content="我的音乐云盘"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Cloud}"
                                     ImageWidth="19"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CloudMusic}" />
                                 <controls:ImageRadioButton
                                     Content="我的电台"
                                     GroupName="Menu"
@@ -304,7 +305,7 @@
                                     Image="{StaticResource Icon_Love}"
                                     ImageHeight="16"
                                     ImageWidth="16"
-                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
+                                    IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Collection}" />
                             </StackPanel>
                         </Expander>
                         <Expander
@@ -503,5 +504,31 @@
                 </Grid>
             </Grid>
         </Border>
+        <ResizeGrip
+            Grid.Row="2"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+            <ResizeGrip.Template>
+                <ControlTemplate>
+                    <Path
+                        Width="12"
+                        Height="12"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Data="M15.796278,16.882958 L29.796278,16.882958 29.796278,18.882958 15.796278,18.882958 z M8.389616,8.9336629 L37.389616,8.9336629 37.389616,10.933663 8.389616,10.933663 z M0.5,0.5 L44.5,0.5 44.5,2.5 0.5,2.5 z"
+                        Fill="Black"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Stretch="Uniform">
+                        <Path.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform Angle="-45" />
+                            </TransformGroup>
+                        </Path.LayoutTransform>
+                    </Path>
+                </ControlTemplate>
+            </ResizeGrip.Template>
+        </ResizeGrip>
     </Grid>
 </DMSkin:DMSkinSimpleWindow>

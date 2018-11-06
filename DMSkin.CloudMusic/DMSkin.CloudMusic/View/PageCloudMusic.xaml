@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="DMSkin.CloudMusic.View.PageCloudMusic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:DMSkin.CloudMusic.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dmcontrols="clr-namespace:DMSkin.WPF.Controls;assembly=DMSkin.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:DMSkin.CloudMusic.ViewModel"
+    Title="PageLocalMusic"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{StaticResource TextColor}"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewmodel:PageLocalMusicViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border BorderBrush="{StaticResource SplitterColor}" BorderThickness="0,0,0,1">
+            <Grid>
+                <WrapPanel
+                    Margin="30,0,0,5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom">
+                    <TextBlock FontSize="18" Text="我的云盘容量" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Bottom"
+                        Text="云盘容量" />
+                    <ProgressBar
+                        Width="110"
+                        Height="10"
+                        Margin="5,0,5,2"
+                        VerticalAlignment="Bottom"
+                        Maximum="100"
+                        Value="30" />
+                    <TextBlock
+                        Margin="5,0,10,0"
+                        VerticalAlignment="Bottom"
+                        Text="22.4/60G" />
+                    <TextBlock
+                        Margin="5,0,10,0"
+                        VerticalAlignment="Bottom"
+                        Text="歌曲永久保存，随时随地多端畅听" />
+                    <dmcontrols:DMLinkButton
+                        VerticalAlignment="Bottom"
+                        Content="扩容"
+                        DMDisplayLine="False"
+                        DMSystemButtonHoverColor="Transparent"
+                        Foreground="#0C73C2" />
+                </WrapPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="58" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border BorderBrush="{StaticResource SplitterColor}" BorderThickness="0,0,0,1">
+                <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+                    <dmcontrols:DMButton
+                        Width="100"
+                        Height="28"
+                        Background="{StaticResource ThemeColor}"
+                        BorderThickness="0"
+                        Content="播放全部"
+                        CornerRadius="5,0,0,5"
+                        Foreground="White" />
+                    <dmcontrols:DMButton
+                        Width="28"
+                        Height="28"
+                        Background="{StaticResource ThemeColor}"
+                        BorderThickness="0"
+                        CornerRadius="0,5,5,0"
+                        Foreground="White">
+                        <Path
+                            Width="12"
+                            Height="12"
+                            Data="{StaticResource Icon_Add}"
+                            Fill="White"
+                            Stretch="Uniform" />
+                    </dmcontrols:DMButton>
+                    <dmcontrols:DMButton
+                        Width="100"
+                        Height="28"
+                        Margin="10,0,0,0"
+                        Background="White"
+                        BorderBrush="{StaticResource SplitterColor}"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        Foreground="{StaticResource TextColor1}">
+                        <WrapPanel>
+                            <Path
+                                Width="12"
+                                Height="12"
+                                Data="{StaticResource Icon_Add}"
+                                Fill="{StaticResource TextColor1}"
+                                Stretch="Uniform" />
+                            <TextBlock Margin="10,0,0,0" Text="上传音乐" />
+                        </WrapPanel>
+                    </dmcontrols:DMButton>
+                </StackPanel>
+            </Border>
+            <StackPanel
+                Grid.Row="1"
+                Margin="0,150,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="DemiBold"
+                    Foreground="Black"
+                    Text="现在上传文件，电脑手机都能听" />
+                <TextBlock
+                    Margin="0,15,0,30"
+                    HorizontalAlignment="Center"
+                    Foreground="{StaticResource TextColor3}"
+                    Text="超大空间，歌曲永久保存" />
+                <Button
+                    Width="110"
+                    Height="35"
+                    Content="添加音乐"
+                    Style="{StaticResource ThemeButton}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

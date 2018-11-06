@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--  字体  -->
-            <FontFamily x:Key="FontNormal">/DMSkin.CloudMusic;component/Font/#Roboto Light,SimSun</FontFamily>
+            <FontFamily x:Key="FontNormal">微软雅黑,SimSun</FontFamily>
             <!--<FontFamily x:Key="FontNormal">/DMSkin.CloudMusic;component/Font/#Roboto Light,SimSun</FontFamily>-->
             <FontFamily x:Key="FontTitle">微软雅黑</FontFamily>
 
@@ -56,7 +56,7 @@
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMTabControl.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMRadioButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMTreeView.xaml" />
-                <!--<ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMDataGrid.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMDataGrid.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMListBox.xaml" />
 
 
@@ -74,6 +74,8 @@
                 <ResourceDictionary Source="Style/DMScrollViewer.xaml" />
 
                 <ResourceDictionary Source="Style/DMSlider.xaml" />
+
+                <ResourceDictionary Source="Style/ProgressBar.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

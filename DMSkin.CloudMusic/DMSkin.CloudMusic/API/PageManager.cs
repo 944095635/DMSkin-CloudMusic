@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DMSkin.CloudMusic.API
 {
@@ -30,8 +31,14 @@ namespace DMSkin.CloudMusic.API
             }
             set { pageLocalMusic = value; }
         }
+
+        public static Page PageDownLoad = new PageDownLoad();
         #endregion
 
         public static PageEmpty PageEmpty = new PageEmpty();
+
+        public static PageCloudMusic PageCloudMusic = new PageCloudMusic();
+
+        public static PageCollection PageCollection = new PageCollection();
     }
 }

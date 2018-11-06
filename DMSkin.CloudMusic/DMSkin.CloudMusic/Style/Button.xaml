@@ -216,6 +216,7 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region 重写系统按钮-->
     <Style TargetType="{x:Type dmcontrols:DMSystemMaxButton}">
         <Setter Property="Template">
             <Setter.Value>
@@ -321,4 +322,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 </ResourceDictionary>

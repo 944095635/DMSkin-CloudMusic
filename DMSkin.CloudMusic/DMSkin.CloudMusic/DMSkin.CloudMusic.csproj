@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,12 +60,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\PageManager.cs" />
+    <Compile Include="API\PlayManager.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Model\LeftMenu.cs" />
+    <Compile Include="Model\Music.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PageLocalMusicViewModel.cs" />
+    <Compile Include="View\PageCollection.xaml.cs">
+      <DependentUpon>PageCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageDownLoad.xaml.cs">
+      <DependentUpon>PageDownLoad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageEmpty.xaml.cs">
       <DependentUpon>PageEmpty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageCloudMusic.xaml.cs">
+      <DependentUpon>PageCloudMusic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageLocalMusic.xaml.cs">
       <DependentUpon>PageLocalMusic.xaml</DependentUpon>
@@ -107,13 +119,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\PageCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageDownLoad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageEmpty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageCloudMusic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PageLocalMusic.xaml">
       <SubType>Designer</SubType>

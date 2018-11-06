@@ -33,13 +33,12 @@ namespace DMSkin.CloudMusic.ViewModel
                 OnPropertyChanged("CurrentPage");
             }
         }
-        #endregion
 
         private LeftMenu selectMenu;
         /// <summary>
         /// 选中的菜单
         /// </summary>
-        public  LeftMenu SelectMenu
+        public LeftMenu SelectMenu
         {
             get { return selectMenu; }
             set
@@ -54,11 +53,25 @@ namespace DMSkin.CloudMusic.ViewModel
                     case LeftMenu.LocalMusic:
                         CurrentPage = PageManager.PageLocalMusic;
                         break;
+                    case LeftMenu.DownLoad:
+                        CurrentPage = PageManager.PageDownLoad;
+                        break;
+                    case LeftMenu.CloudMusic:
+                        CurrentPage = PageManager.PageCloudMusic;
+                        break;
+                    case LeftMenu.Collection:
+                        CurrentPage = PageManager.PageCollection;
+                        break;
                 }
                 OnPropertyChanged("SelectMenu");
             }
         }
 
+        #endregion
+
+        #region 音乐播放器控制
+
+        #endregion
 
     }
 }
