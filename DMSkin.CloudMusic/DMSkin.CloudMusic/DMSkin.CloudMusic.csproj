@@ -213,9 +213,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Logo\anv.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\Logo\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
