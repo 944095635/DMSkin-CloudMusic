@@ -7,6 +7,9 @@
 
 <Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1001.png'></Image>
 
+## 下载体验包
+[体验版1.0.0.2](https://github.com/944095635/DMSkin-CloudMusic/releases/download/1.0.0.2/demo.zip)
+
 ````csharp
 源码引用了 DMSkin-for-WPF 
 请同时下载最新版的
