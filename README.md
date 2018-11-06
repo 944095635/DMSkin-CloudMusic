@@ -3,15 +3,19 @@
 ## 【网易云音乐】
 此项目持续更新中..
 
-<Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo.png'></Image>
+<Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1001.png'></Image>
 
 ````csharp
 源码引用了 DMSkin-for-WPF 
 ````
 
 ## 【更新日志】
+
+### 1.0.0.1 (2018-11-5)
+1. Frame导航完善。
+2. 本地音乐界面初步完善。
+
 ### 1.0.0.0 (2018-11-5)
-<Image width="600" src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1000.jpg'></Image>
 1. 项目结构搭建完成。
 2. 主界面初步完成。
 
