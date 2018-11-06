@@ -3,10 +3,14 @@
 ## 【网易云音乐】
 此项目持续更新中..
 
+<Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1002.png'></Image>
+
 <Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1001.png'></Image>
 
 ````csharp
 源码引用了 DMSkin-for-WPF 
+请同时下载最新版的
+https://github.com/944095635/DMSkin-for-WPF
 ````
 
 ## 【更新日志】
