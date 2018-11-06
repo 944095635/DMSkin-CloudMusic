@@ -23,6 +23,21 @@ namespace DMSkin.CloudMusic.Model
             }
         }
 
+        private string url;
+        /// <summary>
+        /// 路径
+        /// </summary>
+        public string Url
+        {
+            get { return url; }
+            set
+            {
+                url = value;
+                OnPropertyChanged("Url");
+            }
+        }
+
+
 
         private string title;
 
@@ -76,5 +91,71 @@ namespace DMSkin.CloudMusic.Model
             }
             return Math.Round(size,2) + units[i];
         }
+
+        private string album;
+
+        /// <summary>
+        /// 专辑
+        /// </summary>
+        public string Album
+        {
+            get { return album; }
+            set
+            {
+                album = value;
+                OnPropertyChanged("Album");
+            }
+        }
+
+
+        private string artist;
+
+        /// <summary>
+        /// 作者
+        /// </summary>
+        public string Artist
+        {
+            get { return artist; }
+            set
+            {
+                artist = value;
+                OnPropertyChanged("Artist");
+            }
+        }
+
+
+        private string timeStr;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string TimeStr
+        {
+            get { return timeStr; }
+            set
+            {
+                timeStr = value;
+                OnPropertyChanged("TimeStr");
+            }
+        }
+
+        public string FileName { get; internal set; }
+
+
+        private bool download;
+
+        /// <summary>
+        /// 是否在下载
+        /// </summary>
+        public bool DownLoad
+        {
+            get { return download; }
+            set
+            {
+                download = value;
+                OnPropertyChanged("DownLoad");
+            }
+        }
+
     }
 }

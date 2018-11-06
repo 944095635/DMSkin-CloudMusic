@@ -117,6 +117,7 @@
                     Grid.Row="1"
                     AlternationCount="2"
                     AutoGenerateColumns="False"
+                    BorderThickness="0,1,0,0"
                     CanUserAddRows="False"
                     CanUserDeleteRows="False"
                     CanUserReorderColumns="False"
@@ -144,15 +145,15 @@
                             Header="音乐标题" />
                         <DataGridTextColumn
                             Width="*"
-                            Binding="{Binding OpenSelfStr}"
+                            Binding="{Binding Artist}"
                             Header="歌手" />
                         <DataGridTextColumn
                             Width="*"
-                            Binding="{Binding Position}"
+                            Binding="{Binding Album}"
                             Header="专辑" />
                         <DataGridTextColumn
                             Width="*"
-                            Binding="{Binding PositionSup}"
+                            Binding="{Binding TimeStr}"
                             Header="时长" />
                         <DataGridTextColumn
                             Width="*"

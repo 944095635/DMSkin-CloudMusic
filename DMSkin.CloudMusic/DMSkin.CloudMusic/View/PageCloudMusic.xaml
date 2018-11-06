@@ -13,7 +13,7 @@
     Foreground="{StaticResource TextColor}"
     mc:Ignorable="d">
     <Page.DataContext>
-        <viewmodel:PageLocalMusicViewModel />
+        <viewmodel:PageCloudMusicViewModel />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -36,18 +36,23 @@
                         Height="10"
                         Margin="5,0,5,2"
                         VerticalAlignment="Bottom"
-                        Maximum="100"
-                        Value="30" />
+                        Maximum="{Binding CloudMaxSize}"
+                        Value="{Binding CloudSize}" />
                     <TextBlock
-                        Margin="5,0,10,0"
+                        Margin="5,0,0,0"
                         VerticalAlignment="Bottom"
-                        Text="22.4/60G" />
+                        Text="{Binding CloudSize}" />
+                    <TextBlock VerticalAlignment="Bottom" Text="G" />
+                    <TextBlock VerticalAlignment="Bottom" Text="/" />
+                    <TextBlock VerticalAlignment="Bottom" Text="{Binding CloudMaxSize}" />
+                    <TextBlock VerticalAlignment="Bottom" Text="G" />
                     <TextBlock
                         Margin="5,0,10,0"
                         VerticalAlignment="Bottom"
                         Text="歌曲永久保存，随时随地多端畅听" />
                     <dmcontrols:DMLinkButton
                         VerticalAlignment="Bottom"
+                        Command="{Binding AddSizeCommand}"
                         Content="扩容"
                         DMDisplayLine="False"
                         DMSystemButtonHoverColor="Transparent"
@@ -105,11 +110,67 @@
                     </dmcontrols:DMButton>
                 </StackPanel>
             </Border>
+            <DataGrid
+                Grid.Row="1"
+                AlternationCount="2"
+                AutoGenerateColumns="False"
+                BorderThickness="0,1,0,0"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                CanUserReorderColumns="False"
+                CanUserResizeColumns="False"
+                CanUserResizeRows="False"
+                ColumnHeaderHeight="30"
+                GridLinesVisibility="None"
+                HeadersVisibility="Column"
+                IsReadOnly="True"
+                ItemsSource="{Binding MusicList}"
+                RowHeight="28"
+                SelectedItem="{Binding SelectedMusic, Mode=TwoWay}">
+                <DataGrid.InputBindings>
+                    <MouseBinding Command="{Binding PlayCommand}" MouseAction="LeftDoubleClick" />
+                </DataGrid.InputBindings>
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="Auto"
+                        MinWidth="50"
+                        Binding="{Binding Index}"
+                        Header="" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Title}"
+                        Header="音乐标题" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Artist}"
+                        Header="歌手" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Album}"
+                        Header="专辑" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding TimeStr}"
+                        Header="时长" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding SizeStr}"
+                        Header="大小" />
+                    <DataGridTemplateColumn Width="*" Header="状态">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="下载中..(github服务器 网速较慢)" Visibility="{Binding DownLoad, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
             <StackPanel
                 Grid.Row="1"
                 Margin="0,150,0,0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Visibility="{Binding DisplayMusicList, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=true}">
                 <TextBlock
                     HorizontalAlignment="Center"
                     FontSize="15"

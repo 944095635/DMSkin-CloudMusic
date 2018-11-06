@@ -1,11 +1,13 @@
 ﻿using DMSkin.CloudMusic.API;
 using DMSkin.CloudMusic.Model;
+using DMSkin.WPF.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace DMSkin.CloudMusic.ViewModel
 {
@@ -14,7 +16,33 @@ namespace DMSkin.CloudMusic.ViewModel
         #region 初始化
         public MainWindowViewModel()
         {
-            
+            //初始化播放器
+            PlayManager.player = Player;
+
+            //Player.Position
+
+            //Player.NaturalDuration.TimeSpan.TotalSeconds
+
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    //每隔900 毫秒更新 一次 播放数据
+                    await Task.Delay(900);
+                    if (PlayManager.State == PlayState.Play)
+                    {
+                        Execute.OnUIThread(()=> 
+                        {
+                            //获取当前进度
+                            Position = Player.Position;
+                            if (Player.NaturalDuration.HasTimeSpan)
+                            {
+                                Duration = Player.NaturalDuration.TimeSpan;
+                            }
+                        });
+                    }
+                }
+            });
         } 
         #endregion
 
@@ -70,8 +98,52 @@ namespace DMSkin.CloudMusic.ViewModel
         #endregion
 
         #region 音乐播放器控制
+        private MediaPlayer player =new MediaPlayer();
+        /// <summary>
+        /// 播放器
+        /// </summary>
+        public MediaPlayer Player
+        {
+            get {
+
+                return player;
+            }
+            set
+            {
+                player = value;
+                OnPropertyChanged("Player");
+            }
+        }
+
+        private TimeSpan position;
+        /// <summary>
+        /// 播放进度
+        /// </summary>
+        public TimeSpan Position
+        {
+            get { return position; }
+            set
+            {
+                position = value;
+                OnPropertyChanged("Position");
+            }
+        }
+
+        private TimeSpan duration;
+
+        /// <summary>
+        /// 长度
+        /// </summary>
+        public TimeSpan Duration
+        {
+            get { return duration; }
+            set
+            {
+                duration = value;
+                OnPropertyChanged("Duration");
+            }
+        }
 
         #endregion
-
     }
 }

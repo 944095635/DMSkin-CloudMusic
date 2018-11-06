@@ -1,10 +1,13 @@
 ﻿using DMSkin.CloudMusic.API;
 using DMSkin.CloudMusic.Model;
+using DMSkin.CloudMusic.Properties;
 using DMSkin.WPF;
 using DMSkin.WPF.API;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,27 +16,46 @@ using System.Windows.Input;
 
 namespace DMSkin.CloudMusic.ViewModel
 {
-    public class PageLocalMusicViewModel : ViewModelBase
+    public class PageLocalMusicViewModel : MusicViewModelBase
     {
         public PageLocalMusicViewModel()
         {
-            Console.WriteLine(DateTime.Now.ToLongTimeString());
+            Read();
         }
 
-        private bool displayMusicList;
         /// <summary>
-        /// 是否显示歌曲列表
+        /// 读取配置
         /// </summary>
-        public bool DisplayMusicList
+        public void Read()
         {
-            get { return displayMusicList; }
-            set
+            if (File.Exists("LocalMusic.json"))
             {
-                displayMusicList = value;
-                OnPropertyChanged("DisplayMusicList");
+                //尝试从 配置文件中读取 上次 增加的 播放列表
+                string json = File.ReadAllText("LocalMusic.json");
+                if (!string.IsNullOrEmpty(json))
+                {
+                    List<Music> list = JsonConvert.DeserializeObject<List<Music>>(json);
+                    foreach (var item in list)
+                    {
+                        MusicList.Add(item);
+                    }
+                    //显示歌曲列表
+                    ShowMusicList();
+                }
             }
         }
 
+        /// <summary>
+        /// 写入配置
+        /// </summary>
+        public void Save()
+        {
+
+            string json = JsonConvert.SerializeObject(MusicList);
+            File.WriteAllText("LocalMusic.json", json);
+        }
+
+     
         /// <summary>
         /// 新增文件夹
         /// </summary>
@@ -51,34 +73,8 @@ namespace DMSkin.CloudMusic.ViewModel
 
                         Task.Run(() =>
                         {
-                            int index = 1;
-                            List<Music> TempList = new List<Music>();
                             string[] filelist = Directory.GetFiles(openFileDialog.SelectedPath);
-                            foreach (var item in filelist)
-                            {
-                                FileInfo file = new FileInfo(item);
-                                if (file.Extension.Contains(".mp3"))
-                                {
-                                    TempList.Add(new Music()
-                                    {
-                                        Title = file.Name,
-                                        Size = file.Length,
-                                        Index = index.ToString()
-                                    });
-                                    index++;
-                                }
-                            }
-                            if (TempList.Count > 0)
-                            {
-                                Execute.OnUIThread(()=> 
-                                {
-                                    foreach (var item in TempList)
-                                    {
-                                        MusicList.Add(item);
-                                    }
-                                    DisplayMusicList = true;
-                                });
-                            }
+                            FindMusic(filelist.ToList());
                         });
                     }
                 });
@@ -86,63 +82,49 @@ namespace DMSkin.CloudMusic.ViewModel
         }
 
 
-
-        /// <summary>
-        /// 播放操作
-        /// </summary>
-        public ICommand PlayCommand
+        private void FindMusic(List<string> filelist)
         {
-            get
+            int index = 1;
+            List<Music> TempList = new List<Music>();
+            foreach (var item in filelist)
             {
-                return new DelegateCommand(obj =>
+                FileInfo file = new FileInfo(item);
+
+                MP3Info m = new MP3Info();
+                m.GetMP3Info(file.DirectoryName, file.Name);
+
+                if (file.Extension.Contains(".mp3"))
                 {
-                    if (SelectMusic != null )
+                    TempList.Add(new Music()
                     {
-                        PlayManager.Play(SelectMusic);
+                        Title = m.trackName,
+                        Size = file.Length,
+                        Index = index.ToString(),
+                        Url = file.FullName,
+                        Album = m.Album,
+                        Artist = m.Artist,
+                        TimeStr = m.time
+                    });
+                    index++;
+                }
+            }
+            if (TempList.Count > 0)
+            {
+                Execute.OnUIThread(() =>
+                {
+                    foreach (var item in TempList)
+                    {
+                        if (MusicList.Where(p => p.Title == item.Title).Count() == 0)
+                        {
+                            MusicList.Add(item);
+                        }
                     }
+                    //显示歌曲列表
+                    ShowMusicList();
+                    //保存找到的歌曲
+                    Save();
                 });
             }
         }
-
-
-        private Music selectMusic;
-
-        /// <summary>
-        /// 选中的英语
-        /// </summary>
-        public Music SelectMusic
-        {
-            get { return selectMusic; }
-            set
-            {
-                selectMusic = value;
-                OnPropertyChanged("SelectMusic");
-            }
-        }
-
-
-
-        private ObservableCollection<Music> musicList;
-
-        /// <summary>
-        /// 音乐列表
-        /// </summary>
-        public ObservableCollection<Music> MusicList
-        {
-            get
-            {
-                if (musicList == null)
-                {
-                    musicList = new ObservableCollection<Music>();
-                }
-                return musicList;
-            }
-            set
-            {
-                musicList = value;
-                OnPropertyChanged("MusicList");
-            }
-        }
-
     }
 }

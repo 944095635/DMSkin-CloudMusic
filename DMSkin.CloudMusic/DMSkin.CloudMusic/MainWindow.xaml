@@ -276,7 +276,7 @@
                             Style="{StaticResource NoExpander}">
                             <StackPanel>
                                 <controls:ImageRadioButton
-                                    Content="本地音乐"
+                                    Content="本地音乐*"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Music}"
                                     ImageWidth="14"
@@ -289,7 +289,7 @@
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=DownLoad}" />
                                 <controls:ImageRadioButton
-                                    Content="我的音乐云盘"
+                                    Content="我的音乐云盘*"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Cloud}"
                                     ImageWidth="19"
@@ -421,23 +421,23 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Foreground="{StaticResource TextColor}"
-                        Text="00:00" />
+                        Text="{Binding Position, Mode=OneWay, Converter={StaticResource TimeSpanToStringConverter}}" />
                     <Slider
                         Grid.Column="1"
                         VerticalAlignment="Center"
                         IsMoveToPointEnabled="True"
                         IsSelectionRangeEnabled="True"
-                        Maximum="100"
+                        Maximum="{Binding Duration.TotalSeconds}"
                         SelectionEnd="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value}"
                         SelectionStart="0"
                         Style="{StaticResource DMSlider}"
-                        Value="50" />
+                        Value="{Binding Position.TotalSeconds, Mode=OneWay}" />
                     <TextBlock
                         Grid.Column="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Foreground="{StaticResource TextColor}"
-                        Text="00:00" />
+                        Text="{Binding Duration, Converter={StaticResource TimeSpanToStringConverter}}" />
                     <StackPanel Grid.Column="3" Orientation="Horizontal">
                         <!--#region 声音开关-->
                         <ToggleButton Margin="15,0,0,0" Style="{StaticResource MusicVolumeButton}" />
