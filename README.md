@@ -1,14 +1,15 @@
 # DMSkin-CloudMusic
 网易云音乐-用WPF来做网易云音乐客户端会怎么样?
 ## 【网易云音乐】
+
+## 下载体验包
+[体验版1.0.0.2](https://github.com/944095635/DMSkin-CloudMusic/releases/download/1.0.0.2/demo.zip)
+
 此项目持续更新中..
 
 <Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1002.png'></Image>
 
 <Image src='https://raw.githubusercontent.com/944095635/DMSkin-CloudMusic/master/Screenshot/demo1001.png'></Image>
-
-## 下载体验包
-[体验版1.0.0.2](https://github.com/944095635/DMSkin-CloudMusic/releases/download/1.0.0.2/demo.zip)
 
 ## 编译、修改、学习
 ````csharp
