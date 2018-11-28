@@ -3,7 +3,7 @@
 ## 【网易云音乐】
 
 ## 下载体验包
-[体验版1.0.0.2](https://github.com/944095635/DMSkin-CloudMusic/releases/download/1.0.0.2/demo.zip)
+[下载地址](https://github.com/944095635/DMSkin-CloudMusic/releases)
 
 ## 编译、修改、学习
 ````csharp
