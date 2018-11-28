@@ -1,16 +1,10 @@
-﻿using DMSkin.CloudMusic.API;
-using DMSkin.CloudMusic.Model;
-using DMSkin.CloudMusic.Properties;
-using DMSkin.WPF;
-using DMSkin.WPF.API;
+﻿using DMSkin.CloudMusic.Model;
+using DMSkin.Core.Common;
+using DMSkin.Core.MVVM;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 

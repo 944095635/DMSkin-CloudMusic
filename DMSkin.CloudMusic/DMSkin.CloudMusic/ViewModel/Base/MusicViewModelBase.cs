@@ -1,12 +1,7 @@
 ﻿using DMSkin.CloudMusic.API;
 using DMSkin.CloudMusic.Model;
-using DMSkin.WPF;
-using System;
-using System.Collections.Generic;
+using DMSkin.Core.MVVM;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DMSkin.CloudMusic.ViewModel

@@ -1,6 +1,7 @@
 ﻿using DMSkin.CloudMusic.API;
 using DMSkin.CloudMusic.Model;
-using DMSkin.WPF.API;
+using DMSkin.Core.Common;
+using DMSkin.Core.MVVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;

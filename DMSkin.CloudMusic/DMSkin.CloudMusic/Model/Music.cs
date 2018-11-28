@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DMSkin.Core.MVVM;
+using System;
 
 namespace DMSkin.CloudMusic.Model
 {
-   public class Music:ViewModelBase
+    public class Music:ViewModelBase
     {
         private string index;
 
