@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--#region 这是一个仿照网易云音乐的拉伸按钮-->
+    <Style x:Key="WyyResizeGrip" TargetType="ResizeGrip">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Path
+                        Width="12"
+                        Height="12"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Data="M15.796278,16.882958 L29.796278,16.882958 29.796278,18.882958 15.796278,18.882958 z M8.389616,8.9336629 L37.389616,8.9336629 37.389616,10.933663 8.389616,10.933663 z M0.5,0.5 L44.5,0.5 44.5,2.5 0.5,2.5 z"
+                        Fill="{TemplateBinding Foreground}"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Stretch="Uniform">
+                        <Path.LayoutTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="-45" />
+                            </TransformGroup>
+                        </Path.LayoutTransform>
+                    </Path>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>

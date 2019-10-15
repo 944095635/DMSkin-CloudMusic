@@ -37,12 +37,6 @@
     <ApplicationIcon>Image\Logo\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DMSkin.Core, Version=2.5.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DMSkin.Core.2.5.1.1\lib\net40\DMSkin.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DMSkin.WPF, Version=2.5.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DMSkin.WPF.2.5.1.1\lib\net40\DMSkin.WPF.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -214,6 +208,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Logo\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DMSkin.Core\DMSkin.Core.csproj">
+      <Project>{13da6558-356b-47b9-96f2-fe4d5457cb02}</Project>
+      <Name>DMSkin.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DMSkin.WPF\DMSkin.WPF.csproj">
+      <Project>{168352b1-6a0c-4c9c-8a32-68b512da3cfc}</Project>
+      <Name>DMSkin.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

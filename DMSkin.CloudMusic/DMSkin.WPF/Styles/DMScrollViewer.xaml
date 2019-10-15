@@ -1,0 +1,187 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:DMSkin.WPF.Controls">
+
+    <!--#region 透明点击区域-->
+    <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region 滚动条 滑块-->
+    <Style TargetType="{x:Type controls:DMThumb}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DMThumb}">
+                    <Rectangle
+                        x:Name="rectangle"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ThemeColor}"
+                        RadiusX="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=RadiusX}"
+                        RadiusY="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=RadiusY}"
+                        SnapsToDevicePixels="True" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="rectangle" Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ThemeColorMouseOver}" />
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="true">
+                            <Setter TargetName="rectangle" Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ThemeColorPressed}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region 滚动条-->
+    <Style TargetType="{x:Type controls:DMScrollBar}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Width" Value="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+        <Setter Property="MinWidth" Value="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DMScrollBar}">
+                    <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                        <Track
+                            x:Name="PART_Track"
+                            Grid.Row="1"
+                            IsDirectionReversed="true"
+                            IsEnabled="{TemplateBinding IsMouseOver}">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource RepeatButtonTransparent}" />
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource RepeatButtonTransparent}" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <controls:DMThumb
+                                    RadiusX="{Binding RadiusX, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    RadiusY="{Binding RadiusY, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    ThemeColor="{Binding ThemeColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ThemeColorMouseOver="{Binding ThemeColorMouseOver, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ThemeColorPressed="{Binding ThemeColorPressed, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Height" Value="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                <Setter Property="MinHeight" Value="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DMScrollBar}">
+                            <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                                <Track
+                                    x:Name="PART_Track"
+                                    Grid.Column="1"
+                                    IsEnabled="{TemplateBinding IsMouseOver}">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource RepeatButtonTransparent}" />
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{StaticResource RepeatButtonTransparent}" />
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <controls:DMThumb
+                                            RadiusX="{Binding RadiusX, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                            RadiusY="{Binding RadiusY, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                            ThemeColor="{Binding ThemeColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                            ThemeColorMouseOver="{Binding ThemeColorMouseOver, RelativeSource={RelativeSource TemplatedParent}}"
+                                            ThemeColorPressed="{Binding ThemeColorPressed, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </Track.Thumb>
+                                </Track>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region 滚动列表-->
+    <Style TargetType="{x:Type controls:DMScrollViewer}">
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="CanContentScroll" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DMScrollViewer}">
+                    <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                        <ScrollContentPresenter
+                            x:Name="PART_ScrollContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            CanContentScroll="{TemplateBinding CanContentScroll}"
+                            CanHorizontallyScroll="False"
+                            CanVerticallyScroll="False"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        <controls:DMScrollBar
+                            x:Name="PART_VerticalScrollBar"
+                            HorizontalAlignment="Right"
+                            AutomationProperties.AutomationId="VerticalScrollBar"
+                            Background="{StaticResource TransparentColor}"
+                            Cursor="Arrow"
+                            Maximum="{TemplateBinding ScrollableHeight}"
+                            Minimum="0"
+                            RadiusX="{Binding RadiusX, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            RadiusY="{Binding RadiusY, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            ScrollBarSize="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            ThemeColor="{Binding ThemeColor, RelativeSource={RelativeSource TemplatedParent}}"
+                            ThemeColorMouseOver="{Binding ThemeColorMouseOver, RelativeSource={RelativeSource TemplatedParent}}"
+                            ThemeColorPressed="{Binding ThemeColorPressed, RelativeSource={RelativeSource TemplatedParent}}"
+                            ViewportSize="{TemplateBinding ViewportHeight}"
+                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                            Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <controls:DMScrollBar
+                            x:Name="PART_HorizontalScrollBar"
+                            VerticalAlignment="Bottom"
+                            AutomationProperties.AutomationId="HorizontalScrollBar"
+                            Background="{StaticResource TransparentColor}"
+                            Cursor="Arrow"
+                            Maximum="{TemplateBinding ScrollableWidth}"
+                            Minimum="0"
+                            Orientation="Horizontal"
+                            RadiusX="{Binding RadiusX, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            RadiusY="{Binding RadiusY, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            ScrollBarSize="{Binding ScrollBarSize, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            ThemeColor="{Binding ThemeColor, RelativeSource={RelativeSource TemplatedParent}}"
+                            ThemeColorMouseOver="{Binding ThemeColorMouseOver, RelativeSource={RelativeSource TemplatedParent}}"
+                            ThemeColorPressed="{Binding ThemeColorPressed, RelativeSource={RelativeSource TemplatedParent}}"
+                            ViewportSize="{TemplateBinding ViewportWidth}"
+                            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                            Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+</ResourceDictionary>
